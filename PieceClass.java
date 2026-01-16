@@ -1,7 +1,7 @@
 public abstract class PieceClass{
-  private int HP;
-  private int xCord;
-  private int yCord;
+  public int HP;
+  public int xCord;
+  public int yCord;
 
   public PieceClass(int HP, int xCord, int yCord){
     this.HP = HP;
@@ -33,5 +33,7 @@ public abstract class PieceClass{
     this.HP = HP;
   }
 
-  public void Movement(String[][] board){}
+  public void Movement(PieceClass[][] board, String instructions){}
+
+  public void Update(PieceClass[][] board){}
 }
