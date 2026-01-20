@@ -1,12 +1,18 @@
+import java.lang.Math;
+
 public abstract class PieceClass{
   public int HP;
   public int xCord;
   public int yCord;
+  public int team;
+  public String type;
 
-  public PieceClass(int HP, int xCord, int yCord){
+  public PieceClass(int HP, int xCord, int yCord, int team, String type){
     this.HP = HP;
     this.xCord = xCord;
     this.yCord = yCord;
+    this.team = team;
+    this.type = type;
   }
 
   public int getXCord(){
@@ -21,6 +27,14 @@ public abstract class PieceClass{
     return this.HP;
   }
 
+  public int getTeam(){
+    return this.team;
+  }
+
+  public String getType(){
+    return this.type;
+  }
+
   public void setXCord(int xCord){
     this.xCord = xCord;
   }
@@ -33,7 +47,15 @@ public abstract class PieceClass{
     this.HP = HP;
   }
 
-  public void Movement(PieceClass[][] board, String instructions){}
+  public boolean Movement(PieceClass[][] board, String instructions){return false;}
 
-  public void Update(PieceClass[][] board){}
+  public void Update(PieceClass[][] board){
+    if (getHP() <= 0){
+      System.out.println("Player " + team + "'s " + type + " on " + (char) (yCord + (int) 'a') + (char) (xCord + (int) '1') + " was CAPTURED!");
+      board[yCord][xCord] = null;
+    }
+    else{
+      System.out.println("Player " + team + "'s " + type + " on " + (char) (yCord + (int) 'a') + (char) (xCord + (int) '1') + " was attacked and now has " + HP + " health!");
+    }
+  }
 }
